@@ -12,25 +12,45 @@ def predict():
 
 # App title
 st.title('Weather Forecasting')
-st.markdown('This is an app for forecasting weather in Australia based on Random Forest model')
+st.markdown('This application utilizes a Random Forest model to predict rainfall in Australia, leveraging 10 years of observational data')
 st.image('images/australia.jpg')
 
 # Заголовок секції з характеристиками рослини
 st.header("Weather parameters")
+
+location = st.text_input('Location')
+RainToday = st.checkbox('Rain Today')
+
+MinTemp = st.slider('Minimal Temperature', -100, 100, 0)
+Maxtemp = st.slider('Maximum Temperature', -100, 100, 0)
+Rainfall = st.slider('Rainfall', -100, 100, 0)
+Evaporation = st.slider('Evaporation', -100, 100, 0)
+Sunshine = st.slider('Sunshine', -100, 100, 0)
+WindGustDir = st.slider('Wind Gust Direction', -100, 100, 0)
+WindGustSpeed = st.slider('Wind Gust Speed', -100, 100, 0)
+
 col1, col2 = st.columns(2)
 
 with col1:
-    location = st.text_input('Location')
-    MinTemp = st.number_input('Minimal Temperature')
-    Maxtemp = st.number_input('Maximum Temperature')
-    Rainfall = st.checkbox('Rainfall')
-    
+   
+    WindDir9am = st.slider('Wind Direction at 9am', -100, 100, 0)
+    WindSpeed9am = st.slider('Wind Speed at 9am', -100, 100, 0)
+    Humidity9am = st.slider('Humidity at 9am', -100, 100, 0)
+    Pressure9am = st.slider('Pressure at 9am', -100, 100, 0)
+    Cloud9am = st.slider('Cloud Cover at 9am', -100, 100, 0)
+    Temp9am = st.slider('Temperature at 9am', -100, 100, 0)
+      
 with col2:
-    Temp9am = st.number_input('Temperature at 9 am')
-    Temp3pm = st.number_input('Temperature at 3 pm')
+    WindDir3pm = st.slider('Wind Direction at 3pm', -100, 100, 0)
+    WindSpeed3pm = st.slider('Wind Speed at 3pm', -100, 100, 0)
+    Humidity3pm = st.slider('Humidity at 3pm', -100, 100, 0)
+    Pressure3pm = st.slider('Pressure at 3pm', -100, 100, 0)
+    Cloud3pm = st.slider('Cloud Cover at 3pm', -100, 100, 0)
+    Temp3pm = st.slider('Temperature at 3pm', -100, 100, 0)
+
 
 # Кнопка для прогнозування
-if st.button("Forecast the weather"):
+if st.button("Predict the rain tomorrow"):
     # Викликаємо функцію прогнозування
     result = predict()
     st.write(f"Result: {result}")
